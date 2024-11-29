@@ -51,12 +51,12 @@ public partial class MainWindow : Window
 
     private void BindEvents()
     {
-        if (this.FindControl<CheckBox>("BaseMapCheckBox") is CheckBox baseMapCheckBox)
+        if (this.FindControl<ToggleSwitch>("BaseMapCheckBox") is ToggleSwitch baseMapToggle)
         {
-            baseMapCheckBox.Click += (s, e) =>
+            baseMapToggle.IsCheckedChanged += (s, e) =>
             {
                 if (_map.Layers.Count > 0)
-                    _map.Layers[0].Enabled = baseMapCheckBox.IsChecked ?? true;
+                    _map.Layers[0].Enabled = baseMapToggle.IsChecked ?? true;
             };
         }
 
